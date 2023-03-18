@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import HogDetails from "./HogDetails";
 
-const Tile = ({ isHogGreased, name, image, specialty, weight, greased, medal }) => {
+const HogTiles = ({ isHogGreased, name, image, specialty, weight, greased, medal }) => {
     
     const [isHogClicked, setIsHogClicked] = useState(false);
     
     return (
-        <div>
-            <div className={greased ? "greased pigTile" : "not-greased pigTile"} onClick={() => setIsHogClicked(!isHogClicked)}>
+        <div className="ui grid container pigTileContainer cards" style={{justifyContent: "center", marginTop: "5vh", display: "flex"}}>
+            <div className={greased ? "greased pigTile card" : "not-greased pigTile card"} onClick={() => setIsHogClicked(!isHogClicked)}>
                 <h1>{name}</h1>
                 <img src={image} alt="Hog Image"></img>
                 {isHogClicked ? 
@@ -16,6 +16,7 @@ const Tile = ({ isHogGreased, name, image, specialty, weight, greased, medal }) 
                     weight={weight}
                     greased={greased}
                     medal={medal}
+                    key={specialty}
                 /> 
                 : null}
             </div>
@@ -23,4 +24,4 @@ const Tile = ({ isHogGreased, name, image, specialty, weight, greased, medal }) 
     )
 }
 
-export default Tile;
+export default HogTiles;
