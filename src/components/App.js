@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Nav from "./Nav";
-import HogTiles from "./HogTiles";
+import NewHogForm from "./NewHogForm";
 import FilterHogs from "./FilterHogs";
+import HogTiles from "./HogTiles";
 
 import hogs from "../porkers_data";
 
@@ -15,9 +16,18 @@ function App() {
 		max: 1000
 	})
 
+	const [newHog, setNewHog] = useState({
+		name: "",
+		specialty: "",
+		greased: false,
+		weight: 0,
+		"highest medal achieved": "",
+		image: ""
+	})
+
 	const [isHogGreased, setIsHogGreased] = useState(null);
 
-    const renderHogs = hogsState.map((hog) => {
+    const renderHogs = () => hogsState.map((hog) => {
         return (
             (isHogGreased === null || hog.greased === isHogGreased) && (hogSearch === "") && (hog.weight >= hogWeight.min && hog.weight <= hogWeight.max) || (hog.name.toLowerCase().includes(hogSearch.toLowerCase()) && (isHogGreased === null || hog.greased === isHogGreased) && (hog.weight >= hogWeight.min && hog.weight <= hogWeight.max)) ?
             <HogTiles 
@@ -49,7 +59,15 @@ function App() {
 				isHogGreased={isHogGreased} 
 				setIsHogGreased={setIsHogGreased} 
 			/>
-			{renderHogs}
+			<br></br>
+			<NewHogForm 
+				hogsState={hogsState}
+				setHogsState={setHogsState}
+				newHog={newHog}
+				setNewHog={setNewHog}
+				// greased={newHog.greased}
+			/>
+			{renderHogs()}
 		</div>
 	);
 }
