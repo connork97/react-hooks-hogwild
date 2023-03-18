@@ -8,16 +8,11 @@ import hogs from "../porkers_data";
 function App() {
 
 	const [hogsState, setHogsState] = useState(hogs);
-	console.log(hogsState)
 
 	const [hogSearch, setHogSearch] = useState("All")
 
 	const [isHogGreased, setIsHogGreased] = useState(null);
 
-	const filterGreasedHogs = () => {
-		setIsHogGreased(!isHogGreased);
-
-	}
     const renderHogs = hogsState.map((hog) => {
         return (
             (isHogGreased === null || hog.greased === isHogGreased) && (hogSearch === "All" || hogSearch === "") || ((hog.name.toLowerCase().includes(hogSearch.toLowerCase()) && (isHogGreased === null || hog.greased === isHogGreased))) ?
@@ -45,8 +40,6 @@ function App() {
 				setHogSearch={setHogSearch}
 				hogsState={hogsState}
 				setHogsState={setHogsState}
-
-				filterGreasedHogs={filterGreasedHogs} 
 				isHogGreased={isHogGreased} 
 				setIsHogGreased={setIsHogGreased} 
 			/>

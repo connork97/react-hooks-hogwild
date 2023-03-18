@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import HogDetails from "./HogDetails";
 
-const HogTiles = ({ isHogGreased, name, image, specialty, weight, greased, medal }) => {
+const HogTiles = ({ name, image, specialty, weight, greased, medal }) => {
     
     const [isHogClicked, setIsHogClicked] = useState(false);
     
