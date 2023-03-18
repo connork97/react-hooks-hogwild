@@ -9,13 +9,17 @@ function App() {
 
 	const [hogsState, setHogsState] = useState(hogs);
 
-	const [hogSearch, setHogSearch] = useState("All")
+	const [hogSearch, setHogSearch] = useState("")
+	const [hogWeight, setHogWeight] = useState({
+		min: 0,
+		max: 1000
+	})
 
 	const [isHogGreased, setIsHogGreased] = useState(null);
 
     const renderHogs = hogsState.map((hog) => {
         return (
-            (isHogGreased === null || hog.greased === isHogGreased) && (hogSearch === "All" || hogSearch === "") || ((hog.name.toLowerCase().includes(hogSearch.toLowerCase()) && (isHogGreased === null || hog.greased === isHogGreased))) ?
+            (isHogGreased === null || hog.greased === isHogGreased) && (hogSearch === "") && (hog.weight >= hogWeight.min && hog.weight <= hogWeight.max) || (hog.name.toLowerCase().includes(hogSearch.toLowerCase()) && (isHogGreased === null || hog.greased === isHogGreased) && (hog.weight >= hogWeight.min && hog.weight <= hogWeight.max)) ?
             <HogTiles 
 				name={hog.name}
 				image={hog.image}
@@ -40,6 +44,8 @@ function App() {
 				setHogSearch={setHogSearch}
 				hogsState={hogsState}
 				setHogsState={setHogsState}
+				hogWeight={hogWeight}
+				setHogWeight={setHogWeight}
 				isHogGreased={isHogGreased} 
 				setIsHogGreased={setIsHogGreased} 
 			/>
