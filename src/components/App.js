@@ -26,8 +26,26 @@ function App() {
 	})
 
 	const [isHogGreased, setIsHogGreased] = useState(null);
-
+	
     const renderHogs = () => hogsState.map((hog) => {
+	// 	if ((isHogGreased === null || hog.greased === isHogGreased) && (hog.weight >= hogWeight.min && hog.weight <= hogWeight.max)) {
+	// 		if (hog.name.toLowerCase().includes(hogSearch.toLowerCase()) && (isHogGreased === null || hog.greased === isHogGreased) && (hog.weight >= hogWeight.min && hog.weight <= hogWeight.max)) {
+	// 		return (
+	// 			<HogTiles 
+	// 				name={hog.name}
+	// 				image={hog.image}
+	// 				specialty={hog.specialty}
+	// 				weight={hog.weight}
+	// 				greased={hog.greased}
+	// 				medal={hog["highest medal achieved"]}
+	// 				key={hog.name}
+	// 				hogs={hogsState}
+	// 				isHogGreased={isHogGreased}
+    //         	/>
+	// 		)
+	// 		}
+	// 	}
+			
         return (
             (isHogGreased === null || hog.greased === isHogGreased) && (hogSearch === "") && (hog.weight >= hogWeight.min && hog.weight <= hogWeight.max) || (hog.name.toLowerCase().includes(hogSearch.toLowerCase()) && (isHogGreased === null || hog.greased === isHogGreased) && (hog.weight >= hogWeight.min && hog.weight <= hogWeight.max)) ?
             <HogTiles 

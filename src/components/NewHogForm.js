@@ -13,7 +13,6 @@ const NewHogForm = ({ hogsState, setHogsState, newHog, setNewHog }) => {
     }
 
     const handleNewHogSubmit = (event) => {
-        
         setHogsState((prevHogsState) => {
             return [...prevHogsState, newHog]
         })
